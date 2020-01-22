@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_application">
+    <sys_app_application action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category display_value="Custom Applications">e0355b31ef303000a61d5a3615c0fb78</category>
+        <description/>
+        <device_type>browser</device_type>
+        <hint/>
+        <name>Title Cellphone Reimbursement</name>
+        <order>100</order>
+        <roles>x_363473_deltekint.title_cellphone_reimbursement_user</roles>
+        <sys_class_name>sys_app_application</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-22 21:10:22</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>75fd4045dbae4010cd9d53184b9619db</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Title Cellphone Reimbursement</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="DeltekIntegration" source="x_363473_deltekint">9b9d3eb4db2a4010cd9d53184b9619c7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DeltekIntegration">9b9d3eb4db2a4010cd9d53184b9619c7</sys_scope>
+        <sys_update_name>sys_app_application_75fd4045dbae4010cd9d53184b9619db</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-22 21:10:22</sys_updated_on>
+        <title>Title Cellphone Reimbursement</title>
+        <view_name/>
+    </sys_app_application>
+</record_update>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Title Cellphone Reimbursement" max_length="40" name="x_363473_deltekint_title_cellphone_reimbursement" type="collection">
+        <element label="Amount Reimbursed" max_length="20" name="amount_reimbursed" type="currency"/>
+        <element label="Career Level" max_length="32" name="career_level" reference="sys_user" type="reference"/>
+        <element label="Title" mandatory="true" max_length="100" name="title" type="string"/>
+        <index name="index">
+            <element name="career_level"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_import_set_row" label="Cell Phone Reimbursement" max_length="40" name="x_363473_deltekint_1579706548346" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Charge Code" choice="1" label="Charge Code" max_length="40" name="u_charge_code" type="choice">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Description" label="Description" max_length="40" name="u_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Expense Incurred" label="Expense Incurred" max_length="40" name="u_expense_incurred" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=From Date" label="From Date" max_length="40" name="u_from_date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Purpose" label="Purpose" max_length="40" name="u_purpose" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Receipt Attached" label="Receipt Attached" max_length="40" name="u_receipt_attached" type="boolean"/>
+        <element attributes="encode_utf8=false" default="javascript:gs.getUserID()" display="true" dynamic_default_value="2fd8e97bef3221002841f7f775c0fbc1" label="Submitted By" max_length="32" name="u_submitted_by" reference="sys_user" type="reference" use_dynamic_default="true"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=To Date" label="To Date" max_length="40" name="u_to_date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Type" choice="1" label="Type" max_length="40" name="u_type" read_only="true" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Cell Phone Reimbursement" value="cell phone reimbursement"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="u_submitted_by"/>
+        </index>
+    </element>
+</database>

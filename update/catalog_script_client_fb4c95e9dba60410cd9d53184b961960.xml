@@ -36,13 +36,13 @@
 
 	function CheckCount(response) {
 		var answer = response.responseXML.documentElement.getAttribute("answer");
-		alert("Count Exists-->"+answer);
-		var toDate = g_form.setValue("u_to_date","");
+		//alert("Count Exists-->"+answer);
+		//var toDate = g_form.setValue("u_to_date","");
 
 		if(answer){
 			alert("Already request in place for this user, please wait for some time");
 			//g_form.submitted = false;
-			//var toDate = g_form.setValue("u_to_date",'');
+			var toDate = g_form.setValue("u_to_date",'');
 			
 			return false;
 		}else{
@@ -58,7 +58,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>fb4c95e9dba60410cd9d53184b961960</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Check 4 Existence</sys_name>
         <sys_overrides/>
         <sys_package display_value="DeltekIntegration" source="x_363473_deltekint">9b9d3eb4db2a4010cd9d53184b9619c7</sys_package>
@@ -66,7 +66,7 @@
         <sys_scope display_value="DeltekIntegration">9b9d3eb4db2a4010cd9d53184b9619c7</sys_scope>
         <sys_update_name>catalog_script_client_fb4c95e9dba60410cd9d53184b961960</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-01-24 16:56:35</sys_updated_on>
+        <sys_updated_on>2020-01-24 21:40:38</sys_updated_on>
         <table/>
         <type>onChange</type>
         <ui_type>10</ui_type>

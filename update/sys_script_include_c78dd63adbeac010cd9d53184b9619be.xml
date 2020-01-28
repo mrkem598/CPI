@@ -12,24 +12,197 @@ UIPathRestUtils.prototype = {
     initialize: function() {},
 
     type: 'UIPathRestUtils',
-	
-	sendValuesToUipath: function(){
-		
-		var tenant = 'TeraThinkDei7ue290882';
-		
-	}
+
+    sendValuesToUipath: function() {
+
+        var tenant = 'TeraThinkDei7ue290882';
+        var clientId = '8DEv1AMNXczW3y4U15LL3jYf62jK93n5';
+        var refreshToken = 'FQeOK6SMcBFChyJNR7TE4oCwsnWsBow87ibZwhOueG5J4';
+        var accountLogicName = 'mohammedk';
+        var robotName = '';
+        var processName = "CellPhoneReImbursement_CPR";
+        var accessToken = this.getAccessToken(tenant, clientId, refreshToken);
+        var robotId = this.getRobotId(accessToken, tenant, accountLogicalName, robotName);
+        var releaseKey = this.getProcess(accessToken, tenant, processName, accountLogicalName);
+
+        this.startAJob(accessToken, tenant, accountLogicalName, releaseKey, robotId);
+
+
+    },
+
+    //start a job in UIPath with custom input parameter values add currentGR
+    startAJob: function(accessToken, tenant, accountLogicalName, releaseKey, robotId) {
+        var auth = 'Bearer ' + accessToken;
+
+        if (accessToken && releaseKey && robotId) {
+            try {
+                var ret = '';
+                var inputArgumentsObj = {};
+                //inputArgumentsObj.fromDate = currentGR.u_from_date;
+                //inputArgumentsObj.toDate = currentGR.u_to_date;
+                inputArgumentsObj.description = "Test DEscription API call"; //currentGR.u_description;
+                inputArgumentsObj.purpose = "Test purpose API call"; //currentGR.u_purpose;
+                inputArgumentsObj.chargeCode = "Test code API call - CC123"; //currentGR.u_charge_code;
+                //inputArgumentsObj.type = currentGR.u_type;
+                //inputArgumentsObj.expenseIncurred = currentGR.u_expense_incurred;
+                //inputArgumentsObj.date = new GlideDate();
+                var arguments = JSON.stringify(inputArgumentsObj);
+                var encodedObj = JSON.stringify(arguments);
+
+                var r = new sn_ws.RESTMessageV2('UiPath', 'StartAJob');
+                r.setStringParameterNoEscape('account_logical_name', accountLogicalName);
+                r.setStringParameterNoEscape('tenant_logical_name', tenant);
+                r.setStringParameterNoEscape('access_token', auth);
+                r.setStringParameterNoEscape('input_arguments', encodedObj);
+                r.setStringParameterNoEscape('release_key', releaseKey);
+                r.setStringParameterNoEscape('robot_id', robotId);
+                r.setStringParameterNoEscape('tenant', tenant);
+
+                var response = r.execute();
+                var responseBody = response.getBody();
+                var httpStatus = response.getStatusCode();
+                if (httpStatus == 201) {
+                    var responseObj = JSON.parse(responseBody);
+                    var value = responseObj.value;
+                    var jobId = value[0].Id;
+                    if (responseObj && value && jobId) {
+                        gs.info('[UIPathRestUtils.startAJob] job ID is ' + jobId);
+                        ret = jobId;
+                    } else {
+                        gs.error('[UIPathRestUtils.startAJob] the job ID was not returned. Response body - ' + responseBody);
+                    }
+                } else {
+                    gs.error('[UIPathRestUtils.startAJob] HTTP error with UiPath request - ' + ' HTTP Status = ' + httpStatus);
+                }
+            } catch (ex) {
+                gs.error('[UIPathRestUtils.startAJob] exception error - ' + ex.message);
+            }
+            return ret;
+        }
+    },
+
+    getRobotId: function(accessToken, tenant, accountLogicalName, robotName) {
+        var auth = 'Bearer ' + accessToken;
+
+        if (accessToken) {
+            try {
+                var ret = '';
+                var r = new sn_ws.RESTMessageV2('x_tethr_deltekinte.UiPath', 'GetRobotId');
+                r.setRequestHeader('Authorization', auth);
+                r.setRequestHeader('X-UIPATH-TenantName', tenant);
+                r.setStringParameterNoEscape('robot_name', robotName);
+                r.setStringParameterNoEscape('account_logical_name', accountLogicalName);
+                r.setStringParameterNoEscape('tenant_logical_name', tenant);
+
+                var response = r.execute();
+                var responseBody = response.getBody();
+                var httpStatus = response.getStatusCode();
+                if (httpStatus == 200) {
+                    var responseObj = JSON.parse(responseBody);
+                    var value = responseObj.value;
+                    var robotId = value[0].Id;
+                    if (responseObj && value && robotId) {
+                        gs.info('[UIPathRestUtils.getRobotId] robot ID is ' + robotId);
+                        ret = robotId;
+                    } else {
+                        gs.error('[UIPathRestUtils.getRobotId] the release key was not returned. Response body - ' + responseBody);
+                    }
+                } else {
+                    gs.error('[UIPathRestUtils.getRobotId] HTTP error with UiPath request - ' + ' HTTP Status = ' + httpStatus);
+                }
+            } catch (ex) {
+                gs.error('[UIPathRestUtils.getRobotId] exception error - ' + ex.message);
+            }
+            return ret;
+        }
+    },
+
+
+    //authenticate and returns access token needed for subsequent requests
+    //tenant-JosephDefaucb2y162031,clientId-8DEv1AMNXczW3y4U15LL3jYf62jK93n5,refresh_token-exFiydnBJSyMaSEK-uTb39tsPuv6fA9lWs55lv18zzzNF
+    getAccessToken: function(tenant, clientId, refreshToken) {
+        try {
+            var ret = '';
+            var r = new sn_ws.RESTMessageV2('x_tethr_deltekinte.UiPath', 'GetToken');
+            r.setStringParameterNoEscape('tenant_name', tenant);
+            r.setStringParameterNoEscape("client_id", clientId);
+            r.setStringParameterNoEscape("refresh_token", refreshToken);
+
+            var response = r.execute();
+            var responseBody = response.getBody();
+            var httpStatus = response.getStatusCode();
+            if (httpStatus == 200) {
+                var responseObj = JSON.parse(responseBody);
+                var access_token = responseObj.access_token;
+                if (responseObj && access_token) {
+                    gs.info('[UIPathRestUtils.getAccessToken] Access token is ' + access_token);
+                    ret = access_token;
+                } else {
+                    gs.error('[UIPathRestUtils.getAccessToken] Access token was not returned. Response body - ' + responseBody);
+                }
+            } else {
+                gs.error('[UIPathRestUtils.getAccessToken] HTTP error with UiPath request - ' + ' HTTP Status = ' + httpStatus);
+            }
+        } catch (ex) {
+            gs.error('[UIPathRestUtils.getAccessToken] exception error - ' + ex.message);
+        }
+        return ret;
+    },
+
+
+    //get the process release key needed to start a job in uipath orchestrator. parameters of access token and process name ('CellPhoneReImbursement_CPR')
+    getProcess: function(accessToken, tenant, processName, accountLogicalName) {
+
+        var auth = 'Bearer ' + accessToken;
+
+        if (accessToken) {
+            try {
+                var ret = '';
+                var r = new sn_ws.RESTMessageV2('x_tethr_deltekinte.UiPath', 'GetProcess');
+                r.setRequestHeader('Authorization', auth);
+                r.setRequestHeader('X-UIPATH-TenantName', tenant);
+                r.setStringParameter('process_name', processName);
+                r.setStringParameterNoEscape('account_logical_name', accountLogicalName);
+                r.setStringParameterNoEscape('tenant_logical_name', tenant);
+
+
+                var response = r.execute();
+                var responseBody = response.getBody();
+                var httpStatus = response.getStatusCode();
+                if (httpStatus == 200) {
+                    var responseObj = JSON.parse(responseBody);
+                    var value = responseObj.value;
+                    var releaseKey = value[0].Key;
+                    if (responseObj && value && releaseKey) {
+                        gs.info('[UIPathRestUtils.getProcess] realease key is ' + releaseKey);
+                        ret = releaseKey;
+                    } else {
+                        gs.error('[UIPathRestUtils.getProcess] the release key was not returned. Response body - ' + responseBody);
+                    }
+                } else {
+                    gs.error('[UIPathRestUtils.getProcess] HTTP error with UiPath request - ' + ' HTTP Status = ' + httpStatus);
+                }
+            } catch (ex) {
+                gs.error('[UIPathRestUtils.getProcess] exception error - ' + ex.message);
+            }
+            return ret;
+        }
+    },
+
+
+
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-01-28 18:10:54</sys_created_on>
         <sys_id>c78dd63adbeac010cd9d53184b9619be</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>UIPathRestUtils</sys_name>
         <sys_package display_value="DeltekIntegration" source="x_363473_deltekint">9b9d3eb4db2a4010cd9d53184b9619c7</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="DeltekIntegration">9b9d3eb4db2a4010cd9d53184b9619c7</sys_scope>
         <sys_update_name>sys_script_include_c78dd63adbeac010cd9d53184b9619be</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-01-28 18:16:17</sys_updated_on>
+        <sys_updated_on>2020-01-28 20:59:28</sys_updated_on>
     </sys_script_include>
 </record_update>

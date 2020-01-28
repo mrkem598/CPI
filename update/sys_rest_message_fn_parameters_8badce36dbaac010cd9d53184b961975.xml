@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn_parameters">
+    <sys_rest_message_fn_parameters action="INSERT_OR_UPDATE">
+        <name>client id</name>
+        <rest_message_function display_value="GetToken">c26d4af2dbaac010cd9d53184b96196a</rest_message_function>
+        <sys_class_name>sys_rest_message_fn_parameters</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-28 16:58:25</sys_created_on>
+        <sys_id>8badce36dbaac010cd9d53184b961975</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>client id</sys_name>
+        <sys_package display_value="DeltekIntegration" source="x_363473_deltekint">9b9d3eb4db2a4010cd9d53184b9619c7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DeltekIntegration">9b9d3eb4db2a4010cd9d53184b9619c7</sys_scope>
+        <sys_update_name>sys_rest_message_fn_parameters_8badce36dbaac010cd9d53184b961975</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-28 17:01:05</sys_updated_on>
+        <type>string</type>
+        <value>8DEv1AMNXczW3y4U15LL3jYf62jK93n5</value>
+    </sys_rest_message_fn_parameters>
+</record_update>

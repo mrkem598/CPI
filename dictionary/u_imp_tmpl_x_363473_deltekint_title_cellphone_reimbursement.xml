@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_import_set_row" label="Imp Tmpl X 363473 Deltekint Title Cellphone Reimbursement" max_length="40" name="u_imp_tmpl_x_363473_deltekint_title_cellphone_reimbursement" type="collection">
+        <element attributes="import_attribute_name=Amount Reimbursed" label="Amount Reimbursed" max_length="20" name="u_amount_reimbursed" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Career Level" label="Career Level" max_length="32" name="u_career_level" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Title" label="Title" max_length="100" name="u_title" type="string"/>
+    </element>
+</database>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>Aligne User Tittle with Cell phone reimbursement </name>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2020-01-29 22:12:55</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>on_demand</run_type>
+        <script><![CDATA[changeUserTitle();
+
+function changeUserTitle() {
+    var userTitle = new GlideRecord("sys_user");
+    userTitle.addEncodedQuery('titleLIKEanalyst^ORtitleLIKEconsultant^ORtitleLIKEdeveloper^ORtitleLIKEbilling');
+    userTitle.query();
+    while (userTitle.next()) {
+        userTitle.title = 'Analyst886';
+		userTitle.u_currency_1 = '90';
+        userTitle.update();
+    }
+//     var userTitle2 = new GlideRecord("sys_user");
+//     userTitle2.addEncodedQuery('titleLIKEBOO');
+//     userTitle2.query();
+//     while (userTitle2.next()) {
+//         userTitle2.title = 'Book7';
+// 		userTitle2.u_currency_1 = "70";
+//         userTitle2.update();
+//     }
+}
+
+
+// var gr = new GlideRecord('sys_user');
+// gr.query();
+
+// while (gr.next()) {
+
+//     if (gr.title != '') {
+//         var titleCellphone = new GlideRecord('x_363473_deltekint_title_cellphone_reimbursement');
+//         titleCellphone.addQuery('userTitle', gr.title);
+//         titleCellphone.query();
+
+//         if (titleCellphone.next()) {
+//             gr.title = titleCellphone.sys_id;
+//         }
+//     } else if (gr.title != '') {
+//         var userTitle = new GlideRecord('sys_user');
+//         userTitle.addEncodedQuery('titleLIKEANALYST' + gr.title);
+//         userTitle.query();
+
+//         if (userTitle.next()) {
+//             gr.title = userTitle.sys_id;
+//         }
+//         gr.update();
+//     }
+// }]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-29 22:13:34</sys_created_on>
+        <sys_id>da6f5893dba64410cd9d53184b9619a3</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>Aligne User Tittle with Cell phone reimbursement </sys_name>
+        <sys_package display_value="DeltekIntegration" source="x_363473_deltekint">9b9d3eb4db2a4010cd9d53184b9619c7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DeltekIntegration">9b9d3eb4db2a4010cd9d53184b9619c7</sys_scope>
+        <sys_update_name>sysauto_script_da6f5893dba64410cd9d53184b9619a3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-30 03:03:00</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="pa_widget_indicators">
+    <pa_widget_indicators action="INSERT_OR_UPDATE">
+        <aggregate display_value="7d running AVG">9ef05051d7001100ba986f14ce610372</aggregate>
+        <breakdown/>
+        <breakdown_level2/>
+        <chart_type>line</chart_type>
+        <color display_value="Yellow">65b303c7a9fe3dba000882c19631a889</color>
+        <element/>
+        <element_level2/>
+        <follow_element>false</follow_element>
+        <follow_managed_element>false</follow_managed_element>
+        <followed_breakdown/>
+        <indicator display_value="Number of updated incidents">12e95e9a38c540107f44ef4440644f45</indicator>
+        <label/>
+        <order/>
+        <second_y_axis>false</second_y_axis>
+        <sys_class_name>pa_widget_indicators</sys_class_name>
+        <sys_created_by>pa_power_user</sys_created_by>
+        <sys_created_on>2020-02-03 19:46:13</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>1dad613cdb320010cd9d53184b961990</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="DeltekIntegration" source="x_363473_deltekint">9b9d3eb4db2a4010cd9d53184b9619c7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DeltekIntegration">9b9d3eb4db2a4010cd9d53184b9619c7</sys_scope>
+        <sys_update_name>pa_widget_indicators_1dad613cdb320010cd9d53184b961990</sys_update_name>
+        <sys_updated_by>pa_power_user</sys_updated_by>
+        <sys_updated_on>2020-02-03 19:46:13</sys_updated_on>
+        <widget display_value="Incidents not resolved by first assigned group">595ca9b8db320010cd9d53184b961949</widget>
+        <widget_indicator/>
+    </pa_widget_indicators>
+</record_update>

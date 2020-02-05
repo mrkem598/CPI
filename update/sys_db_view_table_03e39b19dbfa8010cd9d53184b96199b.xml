@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_view_table">
+    <sys_db_view_table action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <left_join>false</left_join>
+        <order>100</order>
+        <sys_class_name>sys_db_view_table</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-02-05 16:30:55</sys_created_on>
+        <sys_id>03e39b19dbfa8010cd9d53184b96199b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>u_x_snc_customer_sat_survey_scores</sys_name>
+        <sys_package display_value="DeltekIntegration" source="x_363473_deltekint">9b9d3eb4db2a4010cd9d53184b9619c7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DeltekIntegration">9b9d3eb4db2a4010cd9d53184b9619c7</sys_scope>
+        <sys_update_name>sys_db_view_table_03e39b19dbfa8010cd9d53184b96199b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-02-05 16:30:55</sys_updated_on>
+        <table>u_x_snc_customer_sat_survey_scores</table>
+        <variable_prefix>s</variable_prefix>
+        <view display_value="x_363473_deltekint_test_survey">ab735f9ddbba8010cd9d53184b961961</view>
+        <where_clause>s_u_incident = i_sys_id</where_clause>
+    </sys_db_view_table>
+</record_update>
